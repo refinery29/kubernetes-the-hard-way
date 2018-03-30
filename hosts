@@ -1,0 +1,7 @@
+[worker]
+compute10.cloud.rf29.net
+compute11.cloud.rf29.net
+
+[controller]
+control04.cloud.rf29.net
+control05.cloud.rf29.net
