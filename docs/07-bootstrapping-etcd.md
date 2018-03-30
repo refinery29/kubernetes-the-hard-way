@@ -64,7 +64,7 @@ Documentation=https://github.com/coreos
 
 [Service]
 ExecStart=/usr/local/bin/etcd \\
-  --name ${ETCD_NAME} \\
+  --name $(hostname -s) \\
   --cert-file=/etc/etcd/kubernetes.pem \\
   --key-file=/etc/etcd/kubernetes-key.pem \\
   --peer-cert-file=/etc/etcd/kubernetes.pem \\
@@ -78,7 +78,7 @@ ExecStart=/usr/local/bin/etcd \\
   --listen-client-urls https://$(hostname -i):2379,http://127.0.0.1:2379 \\
   --advertise-client-urls https://$(hostname -i):2379 \\
   --initial-cluster-token etcd-cluster-0 \\
-  --initial-cluster control04=https://$(host control04 | cut -d' ' -f4):2380,control05=https://$(host control05 | cut -d' ' -f4):2380 \\
+  --initial-cluster control03=https://10.10.210.103:2380,control04=https://10.10.210.191:2380,control05=https://10.10.210.192:2380 \\
   --initial-cluster-state new \\
   --data-dir=/var/lib/etcd
 Restart=on-failure

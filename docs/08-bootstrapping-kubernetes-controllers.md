@@ -81,7 +81,7 @@ ExecStart=/usr/local/bin/kube-apiserver \\
   --kubelet-https=true \\
   --runtime-config=api/all \\
   --service-account-key-file=/var/lib/kubernetes/ca-key.pem \\
-  --service-cluster-ip-range=10.10.220.224/28 \\
+  --service-cluster-ip-range=10.32.0.0/24 \\
   --service-node-port-range=30000-32767 \\
   --tls-ca-file=/var/lib/kubernetes/ca.pem \\
   --tls-cert-file=/var/lib/kubernetes/kubernetes.pem \\
@@ -193,7 +193,7 @@ In this section you will configure RBAC permissions to allow the Kubernetes API 
 > This tutorial sets the Kubelet `--authorization-mode` flag to `Webhook`. Webhook mode uses the [SubjectAccessReview](https://kubernetes.io/docs/admin/authorization/#checking-api-access) API to determine authorization.
 
 ```
-gcloud compute ssh controller-0
+ssh controller-0
 ```
 
 Create the `system:kube-apiserver-to-kubelet` [ClusterRole](https://kubernetes.io/docs/admin/authorization/rbac/#role-and-clusterrole) with permissions to access the Kubelet API and perform most common tasks associated with managing pods:
